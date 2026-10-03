@@ -1,0 +1,979 @@
+{
+  "status": "passed",
+  "scope": "Local frozen source and JAR verification; public CI and fresh public clone are separate gates",
+  "date": "2026-10-03",
+  "version": "0.1.0-rc.1",
+  "baselineCommit": "15ad15e5c770ea0e39072f8f88b2733018f02ffd",
+  "localSuites": {
+    "suites": 7,
+    "assertions": 263790,
+    "failed": 0,
+    "skipped": 0,
+    "jdkBuildAndPackage": [
+      "Temurin 17.0.20.1+1",
+      "Temurin 25.0.4.1+1"
+    ],
+    "additionalRuntime": "OpenJDK 21.0.12.1, --limit-modules java.base"
+  },
+  "jarSha256": "5b8e7a816d1d38d681aac0dfdf4c3d199b3676e63f4cc1df351b8707f8075d1c",
+  "sourcesJarSha256": "2baaa17f7c20486f69f821724a19fe3cea07e57af7ecdc3c74830aa90ead6eeb",
+  "sourceAndToolSha256": {
+    "src/main/java/io/specqr/Capacity.java": "15785da52910613834a6a7f3fda36f6061110a1e99258dab77617373f608bf85",
+    "src/main/java/io/specqr/Core.java": "11f1b25e19b11bbf6d340b309b4fe9fcd1ff642e8a97db4f2b6544edd18c40ec",
+    "src/main/java/io/specqr/Gs1.java": "a16777312931c4e69b44ab49a0c9b84206a45f3464d1172a9535768444bf6870",
+    "src/main/java/io/specqr/Json.java": "a56b0e49bda4103e68a1e58639a794917d5b19e4a47e0b8f146092fce0d03846",
+    "src/main/java/io/specqr/Kanji.java": "d34af5b39df0e1ecea2b03b50c3a7dd45831da6fa0fdd7d51544e6328b5ce554",
+    "src/main/java/io/specqr/Main.java": "961bbcfffb025df247b8ca49bc340a483a32728f9c78a0b69c04a8e4e29ffd2b",
+    "src/main/java/io/specqr/Options.java": "6d3f503b01d08232e10aea941265df545a26ff5421ccc465af884867c68f6190",
+    "src/main/java/io/specqr/Plan.java": "bd84dbd4775f67028a32cca295bedc32b97678d3fc5962c569f82283729c273f",
+    "src/main/java/io/specqr/QrCode.java": "fee2f6f0d00ef3221ea18a9a20b7caa3a4f5a9bdf4696475c0680005d297f9af",
+    "src/main/java/io/specqr/Render.java": "9eddff38cc1817fea318a869b144ddbaedb08681d28021f71c5e00f524514b92",
+    "src/main/java/io/specqr/Segment.java": "5dcc12f05fe890176124d275e45b8dd47d10fab450542047d17b861a87af7156",
+    "src/main/java/io/specqr/Segments.java": "41b3d211f0c4e546982dd3b69e33e526311b13a45c835c4a24e16949d9c3f252",
+    "src/main/java/io/specqr/SpecQr.java": "bc7f7f375349fac29b6ec91a3e71b3b655b10126be9c7b94e3dcc2a6e5bcfdc9",
+    "src/main/java/io/specqr/SpecQrException.java": "4bf9b63e3279393a266d98b8612375437c786f08f72f75fed0e4e4bb8bd05750",
+    "src/main/java/io/specqr/StructuredAppend.java": "accff6c50f862b608c3285dab240e618095ded65e5755414b34cf62b1a359cc9",
+    "src/main/java/io/specqr/Tables.java": "68fcba69a0c42b14bc42f3890de439aad0c90a15454fdecea203caa565ad3949",
+    "src/main/java/module-info.java": "5572c4877b247d3a1a05808e3355b0443b79ac2b7a49aafcae99d8b2ff695b89",
+    "src/test/java/io/specqr/ApiTests.java": "3749f65bb2af8785b2bf476735f762041d867318fb3747208282384843fd994b",
+    "src/test/java/io/specqr/CliTests.java": "b6e8a7ad4e237b9bfd7e33c7313bf426de3d0149221ce535c3685e63076d628d",
+    "src/test/java/io/specqr/ConformanceDriver.java": "ae84f7f5c45ba9e6176f2fccad6160fd8616751a1c0f899cc4726789197031f5",
+    "src/test/java/io/specqr/CoreTests.java": "8c4f53a0f5424fe7f24374145e5e6ab3a56136c69b4b64ed45ed9e5bedd08bc1",
+    "src/test/java/io/specqr/Gs1Tests.java": "dab85fbdccbb974db47b0e73f717f05ae9c10dd0d21299e5ebb25d46ca8de1b8",
+    "src/test/java/io/specqr/RenderTests.java": "e8db09f5d30f5689e48fb3ebb955754c7d3ca148b5ae6174844b79a992f6ade8",
+    "src/test/java/io/specqr/SegmentTests.java": "67a5f62af094dacdf7e628d0ed6bd4b67ed22f3711c22ab37440101204ef43c8",
+    "src/test/java/io/specqr/StructuredAppendTests.java": "3c7686234b4317ae296bc0f62031776cb8d1ad1892daf13675bf126effd862b4",
+    "src/test/java/io/specqr/TestRunner.java": "a8a7ebf81154b875eacdc90bf8c8b880e9636558c291c1226f911f2db4a18bab",
+    "tools/Build.java": "a52e03ab4f7ec85466fa4e8fe7a2cecf392fa1e99715d61aec286c6ef0d6a0e5",
+    "tools/VerifyPackage.java": "66c071c5413ea9494a73b1e5bf59d8da55747248762d7d55f3ca652b1762ca74",
+    "tools/conformance/decode_jsqr.mjs": "5455d6921f24a3c4b5ede8ca4e61be9fcae0a9654677f9719677dfe5eb7fb8a0",
+    "tools/conformance/eci-control.mjs": "4852276b75039a974973e2356fddedf665aab5c303b91076cb1d880ee6148de7",
+    "tools/conformance/node_identity.mjs": "7e2ca3a5c38a34732f678611e7e45eee79cd7658f2dda716565bd96fdf9926dc",
+    "tools/conformance/oracle.mjs": "33c79fe179b512ca59de33aad53ac04627d2c7b4825ed2c0644cb8037e29dbe5",
+    "tools/conformance/protocol.py": "05db06c404dacf41f81c60081b58ed665122a561998cf51ae09446d84aeb1814",
+    "tools/conformance/structured-append-golden.mjs": "a757fc0a4daceeedc861bcbef743a440d473f656def1d0e0754c3213250cb6d8",
+    "tools/conformance/verify_conformance.py": "8616da109871c40636f6eeb8427676929811c9c47d2e226f14332968227bb9c7",
+    "tools/conformance/verify_decoders.py": "01741f877c209ff166bab50775ce95eb069bb884b37c4fb773a625c76da6cdee",
+    "tools/conformance/verify_jsqr.py": "aa6228a89e58a2974f1f0d9a32b1be3e6d12e2f2cdb476fff1bd52f00101bd7e",
+    "tools/conformance/zxing-java/DecodeSymbols.java": "e8db286f8d05f11f0b8889020842c163034ff00c4d72f25de0ddd6e1b1bc5ef2",
+    "tools/gs1-conformance/Gs1AuditProbe.java": "9c86ffd381d72966d4bf7d6a98ed6a971dbab483f04a8a529087a55e0e91bd3b",
+    "tools/gs1-conformance/oracle.mjs": "261b3ffdba83b3cc37a3650b0bfa2fe31a05818baee39e752a41a01f89ab2576",
+    "tools/gs1-conformance/verify_gs1.py": "24e0d82b9bc65f13d9232021dc177335fb205068e45843c0b32a5b4959277214"
+  },
+  "independentRuns": {
+    "source": {
+      "conformance": {
+        "status": "passed",
+        "counts": {
+          "publicMatrices": 3028,
+          "nayukiMatrices": 2400,
+          "rawMatrices": 4320,
+          "capacityCases": 640,
+          "boundaryEstimates": 1920,
+          "gfProducts": 65536,
+          "reedSolomonDegrees": 255,
+          "malformedInputs": 18,
+          "structuredAppendSets": 22,
+          "structuredAppendMatrices": 112,
+          "concurrentMatrices": 256
+        },
+        "completeConformanceScope": true,
+        "limitations": [
+          "Finite deterministic corpus, not ISO/GS1 certification.",
+          "Decoder, rendering, packaging and clean-consumer checks have separate reports."
+        ],
+        "negativeControls": [
+          {
+            "fault": "matrixHash",
+            "detected": true
+          },
+          {
+            "fault": "data",
+            "detected": true
+          },
+          {
+            "fault": "codewords",
+            "detected": true
+          },
+          {
+            "fault": "exit",
+            "detected": true
+          },
+          {
+            "fault": "drop",
+            "detected": true
+          },
+          {
+            "fault": "error",
+            "detected": true
+          }
+        ],
+        "malformedNegativeControls": [
+          {
+            "fault": "leak-IllegalArgumentException",
+            "detected": true
+          },
+          {
+            "fault": "leak-ArithmeticException",
+            "detected": true
+          },
+          {
+            "fault": "leak-AssertionError",
+            "detected": true
+          }
+        ]
+      },
+      "jsqr": {
+        "status": "passed",
+        "counts": {
+          "matrixDecodes": 232,
+          "pngDecodes": 232,
+          "eciHeaders": 64,
+          "verifiedRgbaPixels": 13855872
+        },
+        "blankImageNegativeControl": true,
+        "limitations": [
+          "jsQR does not support FNC1 or Structured Append; mandatory ZXing suites verify them.",
+          "Synthetic detection is not camera or printed-media certification."
+        ],
+        "decodedVersions": {
+          "matrix": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "png": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ]
+        }
+      },
+      "zxing-cpp": {
+        "status": "passed",
+        "counts": {
+          "matrixDecodes": 706,
+          "pngDecodes": 750,
+          "verifiedRgbaPixels": 97805184,
+          "structuredAppendHeaders": 135,
+          "fnc1SecondSymbols": 304,
+          "damagedSymbolsCorrected": 0,
+          "eciTextModeChecks": 70,
+          "highLevelSets": 5,
+          "highLevelSymbols": 44,
+          "independentReconstructions": 5
+        },
+        "scopeCompleted": true,
+        "limitations": [
+          "Synthetic PNG detection is not camera/print certification.",
+          "Java excludes FNC1-second; ZXing-C++ tests all 152 indicators."
+        ],
+        "decodedVersions": {
+          "matrix": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "png": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ]
+        },
+        "defaultScaleDiagnostic": {
+          "case": "alphanumeric-L-0",
+          "scale": 8,
+          "quietZone": 4,
+          "allPixelsMatch": true,
+          "independentControlPixelsIdentical": true,
+          "javaPngSha256": "fd902211dbe0d4706772b64e7f1949a5e0e71863dbb3feac46b83113204d4f84",
+          "controlPngSha256": "73dbb0619cf0e1f4a89fe94693c7813febf49fc87cc688db84a1b978146a31b0",
+          "matrixSha256": "afe9eb218390955d8742719b98b5c4735171fe3248b393f77a64437f3c1c6047",
+          "countedAsStrictSuccess": false,
+          "exactPayloadDecoded": true,
+          "detectionFailures": 0,
+          "detectionSuccesses": 1
+        },
+        "negativeControls": [
+          {
+            "case": "blank-matrix",
+            "rejected": true
+          },
+          {
+            "case": "blank-png",
+            "rejected": true
+          }
+        ]
+      },
+      "zxing-java": {
+        "status": "passed",
+        "counts": {
+          "matrixDecodes": 446,
+          "pngDecodes": 446,
+          "verifiedRgbaPixels": 10008270,
+          "structuredAppendHeaders": 135,
+          "fnc1SecondSymbols": 0,
+          "damagedSymbolsCorrected": 32,
+          "eciTextModeChecks": 0,
+          "highLevelSets": 5,
+          "highLevelSymbols": 44,
+          "independentReconstructions": 10
+        },
+        "scopeCompleted": true,
+        "limitations": [
+          "Synthetic PNG detection is not camera/print certification.",
+          "Java excludes FNC1-second; ZXing-C++ tests all 152 indicators."
+        ],
+        "decodedVersions": {
+          "matrix": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "png": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ]
+        },
+        "defaultScaleDiagnostic": {
+          "case": "alphanumeric-L-0",
+          "scale": 8,
+          "quietZone": 4,
+          "allPixelsMatch": true,
+          "independentControlPixelsIdentical": true,
+          "javaPngSha256": "fd902211dbe0d4706772b64e7f1949a5e0e71863dbb3feac46b83113204d4f84",
+          "controlPngSha256": "73dbb0619cf0e1f4a89fe94693c7813febf49fc87cc688db84a1b978146a31b0",
+          "matrixSha256": "afe9eb218390955d8742719b98b5c4735171fe3248b393f77a64437f3c1c6047",
+          "countedAsStrictSuccess": false,
+          "outcomes": [
+            {
+              "error": "NotFoundException"
+            },
+            {
+              "error": "NotFoundException"
+            }
+          ],
+          "matchingOutcomes": true,
+          "detectionFailures": 2,
+          "detectionSuccesses": 0
+        },
+        "negativeControls": [
+          {
+            "case": "blank-matrix",
+            "rejected": true
+          },
+          {
+            "case": "blank-png",
+            "rejected": true
+          }
+        ]
+      }
+    },
+    "jar": {
+      "conformance": {
+        "status": "passed",
+        "counts": {
+          "publicMatrices": 3028,
+          "nayukiMatrices": 2400,
+          "rawMatrices": 4320,
+          "capacityCases": 640,
+          "boundaryEstimates": 1920,
+          "gfProducts": 65536,
+          "reedSolomonDegrees": 255,
+          "malformedInputs": 18,
+          "structuredAppendSets": 22,
+          "structuredAppendMatrices": 112,
+          "concurrentMatrices": 256
+        },
+        "completeConformanceScope": true,
+        "limitations": [
+          "Finite deterministic corpus, not ISO/GS1 certification.",
+          "Decoder, rendering, packaging and clean-consumer checks have separate reports."
+        ],
+        "negativeControls": [
+          {
+            "fault": "matrixHash",
+            "detected": true
+          },
+          {
+            "fault": "data",
+            "detected": true
+          },
+          {
+            "fault": "codewords",
+            "detected": true
+          },
+          {
+            "fault": "exit",
+            "detected": true
+          },
+          {
+            "fault": "drop",
+            "detected": true
+          },
+          {
+            "fault": "error",
+            "detected": true
+          }
+        ],
+        "malformedNegativeControls": [
+          {
+            "fault": "leak-IllegalArgumentException",
+            "detected": true
+          },
+          {
+            "fault": "leak-ArithmeticException",
+            "detected": true
+          },
+          {
+            "fault": "leak-AssertionError",
+            "detected": true
+          }
+        ]
+      },
+      "jsqr": {
+        "status": "passed",
+        "counts": {
+          "matrixDecodes": 232,
+          "pngDecodes": 232,
+          "eciHeaders": 64,
+          "verifiedRgbaPixels": 13855872
+        },
+        "blankImageNegativeControl": true,
+        "limitations": [
+          "jsQR does not support FNC1 or Structured Append; mandatory ZXing suites verify them.",
+          "Synthetic detection is not camera or printed-media certification."
+        ],
+        "decodedVersions": {
+          "matrix": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "png": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ]
+        }
+      },
+      "zxing-cpp": {
+        "status": "passed",
+        "counts": {
+          "matrixDecodes": 706,
+          "pngDecodes": 750,
+          "verifiedRgbaPixels": 97805184,
+          "structuredAppendHeaders": 135,
+          "fnc1SecondSymbols": 304,
+          "damagedSymbolsCorrected": 0,
+          "eciTextModeChecks": 70,
+          "highLevelSets": 5,
+          "highLevelSymbols": 44,
+          "independentReconstructions": 5
+        },
+        "scopeCompleted": true,
+        "limitations": [
+          "Synthetic PNG detection is not camera/print certification.",
+          "Java excludes FNC1-second; ZXing-C++ tests all 152 indicators."
+        ],
+        "decodedVersions": {
+          "matrix": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "png": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ]
+        },
+        "defaultScaleDiagnostic": {
+          "case": "alphanumeric-L-0",
+          "scale": 8,
+          "quietZone": 4,
+          "allPixelsMatch": true,
+          "independentControlPixelsIdentical": true,
+          "javaPngSha256": "fd902211dbe0d4706772b64e7f1949a5e0e71863dbb3feac46b83113204d4f84",
+          "controlPngSha256": "73dbb0619cf0e1f4a89fe94693c7813febf49fc87cc688db84a1b978146a31b0",
+          "matrixSha256": "afe9eb218390955d8742719b98b5c4735171fe3248b393f77a64437f3c1c6047",
+          "countedAsStrictSuccess": false,
+          "exactPayloadDecoded": true,
+          "detectionFailures": 0,
+          "detectionSuccesses": 1
+        },
+        "negativeControls": [
+          {
+            "case": "blank-matrix",
+            "rejected": true
+          },
+          {
+            "case": "blank-png",
+            "rejected": true
+          }
+        ]
+      },
+      "zxing-java": {
+        "status": "passed",
+        "counts": {
+          "matrixDecodes": 446,
+          "pngDecodes": 446,
+          "verifiedRgbaPixels": 10008270,
+          "structuredAppendHeaders": 135,
+          "fnc1SecondSymbols": 0,
+          "damagedSymbolsCorrected": 32,
+          "eciTextModeChecks": 0,
+          "highLevelSets": 5,
+          "highLevelSymbols": 44,
+          "independentReconstructions": 10
+        },
+        "scopeCompleted": true,
+        "limitations": [
+          "Synthetic PNG detection is not camera/print certification.",
+          "Java excludes FNC1-second; ZXing-C++ tests all 152 indicators."
+        ],
+        "decodedVersions": {
+          "matrix": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "png": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ]
+        },
+        "defaultScaleDiagnostic": {
+          "case": "alphanumeric-L-0",
+          "scale": 8,
+          "quietZone": 4,
+          "allPixelsMatch": true,
+          "independentControlPixelsIdentical": true,
+          "javaPngSha256": "fd902211dbe0d4706772b64e7f1949a5e0e71863dbb3feac46b83113204d4f84",
+          "controlPngSha256": "73dbb0619cf0e1f4a89fe94693c7813febf49fc87cc688db84a1b978146a31b0",
+          "matrixSha256": "afe9eb218390955d8742719b98b5c4735171fe3248b393f77a64437f3c1c6047",
+          "countedAsStrictSuccess": false,
+          "outcomes": [
+            {
+              "error": "NotFoundException"
+            },
+            {
+              "error": "NotFoundException"
+            }
+          ],
+          "matchingOutcomes": true,
+          "detectionFailures": 2,
+          "detectionSuccesses": 0
+        },
+        "negativeControls": [
+          {
+            "case": "blank-matrix",
+            "rejected": true
+          },
+          {
+            "case": "blank-png",
+            "rejected": true
+          }
+        ]
+      }
+    }
+  },
+  "gs1": {
+    "stats": {
+      "cases": 5610,
+      "cases_catalog": 351,
+      "operations": 15690,
+      "operations_catalog": 701,
+      "matched": 15626,
+      "matched_catalog": 701,
+      "cases_ordinary": 5205,
+      "operations_ordinary": 14839,
+      "matched_ordinary": 14839,
+      "cases_idna": 30,
+      "operations_idna": 90,
+      "matched_idna": 66,
+      "difference_value": 31,
+      "difference_idna_value": 3,
+      "difference_acceptance": 33,
+      "difference_idna_acceptance": 21,
+      "cases_dot": 24,
+      "operations_dot": 60,
+      "difference_dot_acceptance": 12,
+      "matched_dot": 20,
+      "difference_dot_value": 28,
+      "difference_ordinary_acceptance": 0,
+      "difference_catalog_acceptance": 0,
+      "difference_ordinary_value": 0,
+      "difference_catalog_value": 0,
+      "difference_diagnostic": 0,
+      "difference_ordinary_diagnostic": 0,
+      "difference_catalog_diagnostic": 0,
+      "difference_idna_diagnostic": 0,
+      "difference_dot_diagnostic": 0
+    },
+    "corpusSha256": "61827bb17127b1c931f05d436b72984818636150e8d0a9c1cdf5cec678b99df6",
+    "sourceTreeBeforeSha256": "96ad4c7490c949b56e33d96a2493e89e7a04582c460f19a2395564a68f66ccd8",
+    "sourceTreeAfterSha256": "96ad4c7490c949b56e33d96a2493e89e7a04582c460f19a2395564a68f66ccd8",
+    "diagnosticComparison": "code, reason, ai, value, key, offset, elementIndex, expected, count; missing/null normalized; human-facing message prose excluded",
+    "negativeControl": {
+      "passed": true,
+      "description": "Probe executes GS1, then a test-only JVM property corrupts catalog output; comparison detects the change"
+    },
+    "unexpectedDifferences": 0
+  },
+  "independentReview": {
+    "assertionsPerSourceAndJar": 5823,
+    "jarEntries": 57,
+    "sourceFiles": 17,
+    "isolatedRebuilds": 2,
+    "runtimeModules": [
+      "java.base"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+# Security
+
+SpecQR-Java encodes data; it does not verify a payload's trustworthiness, authorize a URL, encrypt information, or authenticate Structured Append parts.
+
+## 対象と前提
+
+この版は `0.1.0-rc.1` の初期候補です。保証されたセキュリティ対応期間や応答期限は設けていません。報告には使用した版または commit を含め、可能なら最新ソースでも再現するか確認してください。
+
+SpecQR-Java は QR を生成するライブラリです。入力の意味、リンク先の安全性、商品の真正性、GS1 全仕様への準拠を保証しません。QR に含めた情報は、画像を読める相手に開示されます。秘密鍵、パスワード、長期有効な認証 URL、機微な個人情報を符号化する前に、利用側で公開範囲を検討してください。
+
+## 未信頼入力を扱うとき
+
+- payload、手動セグメント数、GS1 要素数、JSON の深さ、描画サイズなどに上限を設けています。ただし、上限はサービス全体の CPU・メモリ・同時実行数制限の代わりにはなりません
+- Web API などでは request size、実行時間、同時実行数、出力サイズをさらに制限してください。複数の最大サイズ PNG を並行生成するとメモリ負荷が大きくなります
+- `estimate()` の成功は描画成功や実機での読み取り成功を意味しません。低い contrast、透明色、小さい quiet zone、細かすぎる印刷 module は別途確認してください
+- QR テキストは正しい UTF-16 として検証します。Digital Link の URL adapter は別の契約で、一部の URL 処理に置換や正規化があります
+- SVG の色属性は XML エスケープしますが、任意の CSS color / paint 値を受け付けます。未信頼な色を使う場合は hex / `black` / `white` / `transparent` などを利用側で許可リスト化し、埋め込み先の CSP や外部リソース取得方針を管理してください
+- PNG / RGBA 出力は限定された色表現を使用します。PNG encoder は `java.base` だけで動作し、外部ツールを起動しません
+- GS1 Digital Link helper は DNS 問い合わせやネットワーク通信を行いません。正しい構文の URI が安全な宛先とは限りません。userinfo、国際化ドメインの見間違い、リダイレクトなどの判定はアプリケーションの責任です
+- Structured Append の parity は 8-bit XOR です。衝突があり、署名・MAC・暗号化の代わりになりません。信頼性が必要なら上位プロトコルで認証してください
+- CLI の `--output` は指定先を上書きします。未信頼なファイルパスをそのまま渡さず、アプリケーション側で出力先を制限してください
+
+資源上限と既知の対応範囲は [API](docs/api.md)、[GS1](docs/gs1.md)、[Structured Append](docs/structured-append.md) に記載しています。JDK のセキュリティ更新も利用側で適用してください。
+
+## 報告方法
+
+公開 issue に秘密情報、実際の被害者データ、有効な credential、未修正の問題を悪用するための詳細を載せないでください。GitHub の private vulnerability reporting が利用可能なら、リポジトリの Security から非公開で報告してください。利用できない場合は、影響を一般化した issue で安全な連絡方法を相談してください。未確認のメールアドレスや応答期限をここで約束するものではありません。
+
+安全に共有できる範囲で、影響する版、OS / JDK、最小の合成入力、再現手順、期待した挙動、実際の挙動、想定される影響を含めてください。機密情報を取り除いた小さい回帰テストを歓迎します。

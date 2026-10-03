@@ -1,0 +1,10 @@
+{
+  "name": "specqr-java-verification",
+  "private": true,
+  "type": "module",
+  "description": "Isolated test-only dependencies for SpecQR Java conformance and independent decoding",
+  "devDependencies": {
+    "jsqr": "1.4.0",
+    "nayuki-qr-code-generator": "1.8.0"
+  }
+}

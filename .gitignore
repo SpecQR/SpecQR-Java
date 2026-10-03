@@ -1,0 +1,12 @@
+/build/
+/dist/
+/tools/conformance/node_modules/
+/tools/conformance/.venv/
+*.class
+*.log
+
+__pycache__/
+*.pyc
+/.tools/
+/.baseline/
+/artifacts/

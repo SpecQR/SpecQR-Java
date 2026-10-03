@@ -1,0 +1,19 @@
+SpecQR-Java
+Copyright (c) 2026 SpecQR contributors
+Licensed under the MIT license (see LICENSE).
+
+This is an independently implemented, idiomatic Java port of the owner's SpecQR
+QR Code Model 2 algorithms and contracts. It is not a wrapper around a different
+language, QR library, native encoder, or service. Runtime dependencies: java.base.
+
+Primary contract baseline:
+SpecQR/SpecQR 15ad15e5c770ea0e39072f8f88b2733018f02ffd (v3.0.0-rc.2), MIT.
+Additional owner-authored port references:
+SpecQR/SpecQR-Python 1deb5cf83ed7a93eeb44138e5980a963a00cdffb, MIT.
+SpecQR/SpecQR-Swift 0ef9613fe8f1ecd687da76ce797b4ef896afa477, MIT.
+SpecQR/SpecQR-CSharp 057c4b3f25e52c4786a8f94c744ff884eedcecfa, MIT.
+SpecQR/SpecQR-CPP e91cd8fe4434fd6ef10d1126bb2fd17b0b19321f, MIT.
+SpecQR/SpecQR-Conformance-Lab 72ad78c979327e3e261526ea3c0a164efa4ab390, MIT.
+
+Independent encoders/decoders are used only by development verification tools.
+No third-party QR implementation source or bytecode is included in the library.
