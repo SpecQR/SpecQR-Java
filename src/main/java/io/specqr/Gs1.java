@@ -1252,7 +1252,7 @@ public final class Gs1 {
             url.authority(),
             pathname.toString(),
             search.isEmpty() ? null : search.toString(),
-            null)
+            url.fragment())
         .serialize();
   }
 

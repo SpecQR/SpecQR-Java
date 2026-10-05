@@ -197,7 +197,7 @@ assert Gs1.normalizeDigitalLink(dot)
 - userinfo をエスケープする。認証や通信は行わない
 - 短縮形・16 進・8 進・単一整数の IPv4 を dotted decimal に正規化
 - 角括弧付き IPv6 と IPv4-mapped 形式を扱い、最長のゼロ列を圧縮。zone identifier は拒否
-- 非空 fragment は拒否。空 `#` は入力として受け付け、作成 / 正規化結果には残さない
+- 非空 fragment は拒否。空 `#` は入力として受け付け、作成時は保持し、正規化結果からは除く
 - baseUrl の非空 query は拒否。空 `?` は受け付け、作成した query で置き換える
 - path 値は `%HH` 構文と UTF-8 を厳密に復号
 - query は寛容な form decoding。正しくない UTF-8 を置換する。低水準 parse では未知 query 内の不正 percent 構文を保持する場合がある
@@ -226,3 +226,7 @@ Unicode host は Java の `IDN.toASCII` による **IDNA2003 / Unicode 3.2** で
 入力文字列は最大 1,000,000 UTF-16 code units、要素数は 16,384。要素 iterable の AI / value 合計テキスト量にも 1,000,000 の work budget を適用します。path / query component と出力にも上限があります。無限 iterator を最後まで走査せず上限で停止しますが、iterator 自体が長時間停止することまでは防げません。公開定数は `MAX_INPUT_CHARACTERS` と `MAX_ELEMENTS` です。
 
 GS1 helper が受理した入力でも QR 容量や render 上限は別です。用途ごとの仕様確認と、実際に利用する reader / printer での検証を行ってください。
+
+## URL serialization compatibility (2026-10-05)
+
+base URL の空 fragment `#` は作成時に保持します。正規化は従来どおり空 fragment を除去し、非空 fragment は拒否します。 限定した URL 出力互換性の拡張であり、通常の QR 符号化・公開 API・runtime dependency は変更しません。既存の dot 値・NUL・IDNA・診断方針を保持します。[固定 corpus と再現手順](../tools/url-serialization/README.md) を参照してください。

@@ -15,6 +15,7 @@ public final class TestRunner {
           "RenderTests",
           "CliTests",
           "Gs1Tests",
+          "UrlSerializationTests",
           "StructuredAppendTests"
         }) {
       Object n = Class.forName("io.specqr." + name).getMethod("run").invoke(null);
