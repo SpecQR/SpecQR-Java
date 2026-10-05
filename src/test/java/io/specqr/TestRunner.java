@@ -11,6 +11,7 @@ public final class TestRunner {
           "CoreTests",
           "SegmentTests",
           "ApiTests",
+          "CrossPortRegressionTests",
           "RenderTests",
           "CliTests",
           "Gs1Tests",
