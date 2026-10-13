@@ -1,6 +1,6 @@
 # 検証と対応範囲
 
-Verification is performed against real Java processes and built JARs. Development-only reference encoders and decoders are not runtime dependencies.
+検証は実際の Java process とビルドした JAR を対象に行います。開発専用の参照 encoder と decoder は runtime の依存に含めません。
 
 この文書は初期公開候補 `0.1.0-rc.1` の検証範囲を記録します。assertion 数、比較した matrix 数、decoder の読み取り回数、CI job 数は別の単位です。規格認証や全 scanner・全プリンターでの動作保証を意味しません。
 

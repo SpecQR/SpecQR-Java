@@ -1,12 +1,14 @@
 # Development-only conformance tools
 
 Every candidate QR operation in these tools runs the actual Java implementation
-in a separate Java 17+ JVM. Python orchestrates comparisons; Node runs independent
-references and decoders. Neither is involved in generating candidate symbols.
-The production library has no runtime dependencies outside `java.base`.
+in a separate Java 17+ JVM.
 
-From the repository root, with Java 17+ (`java` and adjacent `javac`), Python 3.11+
-and Node 18+ installed:
+Python は比較処理を管理し、Node は独立した参照実装と decoder を実行します。
+どちらも候補の symbol 生成には関与しません。製品のライブラリには、
+`java.base` 以外の runtime 依存はありません。
+
+Java 17+ (`java` と同じディレクトリの `javac`)、Python 3.11+、Node 18+ を
+インストールし、repository のルートから実行します。
 
 ```sh
 npm ci --prefix tools/conformance --ignore-scripts
@@ -18,93 +20,93 @@ python3 tools/conformance/verify_decoders.py --decoder cpp --dependency-dir .too
 python3 tools/conformance/verify_decoders.py --decoder java --dependency-dir .tools/zxing-java
 ```
 
-The default candidate is this checkout. `--candidate PATH` selects another source
-checkout. `--candidate-java /absolute/jdk/bin/java` selects the candidate JVM;
-the bridge compiles sources and the test adapter with the adjacent `javac`,
-`--release 17`, then launches only those compiled classes in temporary storage.
-`SPECQR_JAVA` sets the default JVM. ZXing Java's separate `--java` option selects
-its decoder JVM and is independent of the candidate runtime.
+既定の候補は、この checkout です。`--candidate PATH` で別の source checkout を選択します。
+`--candidate-java /absolute/jdk/bin/java` は候補の JVM を選択します。bridge は同じ
+ディレクトリの `javac` と `--release 17` を使って source とテスト用 adapter をコンパイルし、
+一時領域に置いたそれらのコンパイル済み class だけを起動します。
+`SPECQR_JAVA` は既定の JVM を設定します。ZXing Java の別オプション `--java` は、
+decoder の JVM を選択するもので、候補の runtime とは独立しています。
 
-For a built-artifact consumer check, add `--jar /absolute/path/specqr-java.jar`
-to each command. This compiles only the adapter against that exact JAR and uses
-a classpath consisting solely of the adapter classes and the JAR. It does not
-load the source checkout in place of the artifact. Building and inspecting the
-JAR are separate checks; merely passing `--jar` is not a packaging audit.
+ビルドした成果物を使う consumer を検証するには、`--jar /absolute/path/specqr-java.jar` を
+各コマンドへ追加します。指定した JAR に対して adapter だけをコンパイルし、adapter の
+class とその JAR だけで構成した classpath を使います。成果物の代わりに source checkout を
+読み込むことはありません。JAR のビルドと検査は別の確認です。`--jar` を渡すだけでは、
+packaging の監査にはなりません。
 
-Decoder wheels must support the selected Python/OS. `--no-install` uses only
-already hash-verified decoder files and fails when they are missing. Nayuki/jsQR
-can be resolved from a separate prepared package directory with
-`SPECQR_DEV_NODE_MODULES=/absolute/package/directory`. Decoder libraries, binaries,
-node_modules, generated reports, and fixtures are never production dependencies.
-Use `--output PATH` to store reports outside the checkout when desired.
+decoder wheels は、選択した Python/OS に対応している必要があります。`--no-install` は、
+hash 検証済みの decoder files だけを使い、それらがなければ失敗します。Nayuki/jsQR は、
+別途用意した package directory からも解決でき、その場合は
+`SPECQR_DEV_NODE_MODULES=/absolute/package/directory` を指定します。decoder libraries、
+binaries、node_modules、生成した reports、fixtures を製品の依存に含めることはありません。
+report を checkout の外へ保存する場合は `--output PATH` を使います。
 
 ## Exact scope and controls
 
-- Live pinned-JavaScript comparisons: 3,028 public matrices, including every
-  version 1–40 × ECC L/M/Q/H × mask 0–7, Numeric, Alphanumeric, Byte, Kanji,
-  mixed manual segments, automatic optimization, automatic masks, ECI boundaries,
-  FNC1 first/second, GS1, ECC boost, deterministic Unicode fuzz, and 160 randomized
-  binary cases. Comparisons include all padded data codewords, all interleaved
-  data/ECC codewords, version, ECC, mask, and a SHA-256 of every matrix module.
-- Independent Nayuki 1.8.0 comparisons: 2,400 matrices, including all 1,280
-  version/ECC/mask combinations. Fixed versions and masks disable independent
-  auto-mask/segmentation/ECC-boost differences. Segment boundaries are preserved.
-- Internal comparisons: 4,320 raw matrices (three data patterns × 40 versions ×
-  four ECC levels × automatic and eight explicit masks), all eight mask scores,
-  all 65,536 GF products, and RS generator/remainder degrees 1–255.
-- Public planning: 640 exact capacities and 1,920 at/below/above capacity
-  estimates across all versions, ECCs, and data modes. Structured Append compares
-  22 sets and 112 matrices, including exact member data/ECC codewords. Eight-thread shared-process replay compares another
-  256 matrices. Malformed inputs require Java `SpecQrException` and a recognized
-  stable error code; ordinary Java exceptions are not accepted as typed failures.
-- Six candidate negative controls each launch a real JVM and reach the Java API
-  before corrupting a matrix hash, a data byte, or an interleaved codeword, or
-  forcing an exit, missing response, or error. Three additional controls ensure
-  untyped exception leaks are rejected. Candidate and decoder response counts
-  are strict; truncation never becomes a pass.
+- 固定した JavaScript を実行した比較: 公開 API の 3,028 matrices を検査します。
+  version 1–40 × ECC L/M/Q/H × mask 0–7 のすべて、Numeric、Alphanumeric、Byte、Kanji、
+  mixed の手動セグメント、自動最適化、自動 mask、ECI 境界、FNC1 first/second、GS1、
+  ECC boost、決定的な Unicode fuzz、無作為化した binary の 160 ケースを含みます。
+  比較対象は、pad 済み data codewords のすべて、interleaved data/ECC codewords のすべて、
+  version、ECC、mask、全 matrix module の SHA-256 です。
+- 独立した Nayuki 1.8.0 との比較: version/ECC/mask の全 1,280 組合せを含む
+  2,400 matrices を検査します。version と mask を固定し、独立実装間の
+  auto-mask/segmentation/ECC-boost の差を無効にします。segment 境界は保持します。
+- 内部比較: 4,320 raw matrices (three data patterns × 40 versions ×
+  four ECC levels × automatic and eight explicit masks)、全 8 mask scores、
+  全 65,536 GF products、次数 1–255 の RS generator/remainder を検査します。
+- 公開 API の計画: 全 version、ECC、data mode にわたり、640 個の正確な容量と、
+  容量上・容量未満・容量超過の 1,920 estimates を検査します。Structured Append は、
+  各 member の正確な data/ECC codewords を含めて、22 sets と 112 matrices を比較します。
+  同一 process を共有する 8 threads で再実行し、さらに 256 matrices を比較します。
+  不正入力には Java の `SpecQrException` と認識可能な安定した error code を要求し、
+  通常の Java 例外を型付きの失敗として認めません。
+- 候補に対する 6 つの負の対照は、それぞれ実際の JVM を起動して Java API に到達した後で、
+  matrix hash、data byte、interleaved codeword のいずれかを改変するか、終了・応答欠落・
+  エラーを強制します。追加の 3 対照で、型付けされていない例外の漏出が拒否されることを
+  確認します。候補と decoder の応答件数は厳密に確認し、切捨てを成功とは扱いません。
 
-The reports record source fingerprints, candidate JVM/version/PID/nonce,
-class-loading origin, classpath, compiled class or JAR fingerprints, reference
-commit/source fingerprints, reference corpus hashes, and test-tool fingerprints.
-Changed sources, binaries or test tools invalidate the conformance result.
-`--suite public` or `--suite internal` is explicitly a scoped result.
+report は、source の fingerprint、候補の JVM/version/PID/nonce、class の読込み元、
+classpath、コンパイル済み class または JAR の fingerprint、参照 commit/source の
+fingerprint、参照 corpus の hash、テスト用 tool の fingerprint を記録します。
+source、binary、テスト用 tool が変更された場合、conformance の結果は無効です。
+`--suite public` または `--suite internal` は、範囲を限定した結果であることを明示します。
 
 ## Three independent decoders
 
-- jsQR 1.4.0: 232 matrix and 232 real-PNG detections, all versions, Numeric,
-  Alphanumeric, Byte, Kanji, binary bytes, and 64 ECI-header checks. FNC1 and
-  Structured Append are unsupported by jsQR and are only claimed in ZXing lanes.
-- ZXing-C++ 3.1.1: 706 matrix and 750 real-PNG detections, all versions,
-  135 legal Structured Append headers, all 152 FNC1-second indicators via manual
-  and high-level APIs (304 symbols), ECI bytes/text/metadata, five complete
-  high-level sets (44 symbols), and independent set reconstruction.
-- ZXing Java 3.5.4: 446 matrix and 446 real-PNG detections, all versions,
-  135 Structured Append headers and sequence/parity metadata, five complete
-  high-level sets reconstructed through both routes, and 32 damaged-symbol tests
-  that each require three independently corrected codewords.
+- jsQR 1.4.0: matrix からの 232 回と実 PNG からの 232 回の検出、全 version、Numeric、
+  Alphanumeric、Byte、Kanji、binary bytes、ECI header の 64 件の検査を行います。
+  jsQR は FNC1 と Structured Append に未対応で、それらは ZXing lanes だけで検証します。
+- ZXing-C++ 3.1.1: matrix からの 706 回と実 PNG からの 750 回の検出、全 version、
+  合法な Structured Append header の 135 件、manual と high-level の API による
+  全 152 FNC1-second indicators (304 symbols)、ECI bytes/text/metadata、完全な
+  high-level の 5 sets (44 symbols)、独立した set の再構成を検査します。
+- ZXing Java 3.5.4: matrix からの 446 回と実 PNG からの 446 回の検出、全 version、
+  Structured Append header の 135 件と sequence/parity metadata、両経路で再構成した
+  完全な high-level の 5 sets、破損した symbol の 32 テストを検査します。
+  各破損テストでは、3 codewords が独立に訂正されることを要求します。
 
-Every real PNG pixel and quiet-zone pixel is verified before detection. Java
-strict PNG detection uses scale 3 without `PURE_BARCODE`, with no matrix fallback
-when detection fails. The known default-scale-8 PNG detector behavior is retained
-as a separate diagnostic alongside an independent identical-pixel PNG; failures
-remain explicit and never increment strict success counts. C++ tests default
-scale 8. Every decoder must reject an actual all-white negative control.
+検出前に、実際の PNG pixel と quiet-zone pixel をすべて検証します。Java の厳密な
+PNG 検出は scale 3 を使い、`PURE_BARCODE` を使わず、検出失敗時の matrix fallback も
+行いません。既知の default-scale-8 の PNG 検出器の挙動は、同じ画素を持つ独立した PNG と
+並べて、別の診断として保持します。失敗を明示し、厳密な成功数には加えません。
+C++ は既定の scale 8 を検査します。すべての decoder に、実際の全白画像の負の対照を
+拒否することを要求します。
 
-These finite synthetic tests are not ISO/GS1 certification, camera/print testing,
-or a guarantee for arbitrary inputs or damage. No failed decode, absent version,
-missing dependency, changed source, or omitted test is silently counted as a pass.
+これらの合成した有限のテストは、ISO/GS1 の認証、camera や印刷の試験、任意の入力や破損に
+対する保証ではありません。decode の失敗、version の欠落、依存の欠落、source の変更、
+テストの省略を、黙って成功に数えることはありません。
 
 ## Provenance and pinned development dependencies
 
-Adapted from MIT-licensed SpecQR-Python conformance tools at
-`1deb5cf83ed7a93eeb44138e5980a963a00cdffb`. The upstream oracle, Structured Append
-corpus, ECI control and decoder workflow derive from SpecQR-CPP
-`e91cd8fe4434fd6ef10d1126bb2fd17b0b19321f`; the Java decoder and pinned decoder
-requirements derive from SpecQR-CSharp
-`057c4b3f25e52c4786a8f94c744ff884eedcecfa`. The Java decoder preserves the original
-SpecQR-Swift attribution. JavaScript baseline:
+MIT ライセンスの SpecQR-Python の conformance tools を、次の commit を基に調整しました。
+`1deb5cf83ed7a93eeb44138e5980a963a00cdffb`。元の oracle、Structured Append corpus、
+ECI control、decoder workflow は SpecQR-CPP の
+`e91cd8fe4434fd6ef10d1126bb2fd17b0b19321f` に由来します。Java decoder と固定した
+decoder requirements は SpecQR-CSharp の
+`057c4b3f25e52c4786a8f94c744ff884eedcecfa` に由来します。Java decoder は元の
+SpecQR-Swift の出典表記を保持します。JavaScript baseline:
 `15ad15e5c770ea0e39072f8f88b2733018f02ffd`.
 
-The npm lock contains package integrity hashes. ZXing Java JAR SHA-256 and
-ZXing-C++ official PyPI wheel hashes are checked by the tools. No third-party
-encoder or decoder source, binary, dependency or import enters the Java runtime.
+npm lock は package の integrity hash を含みます。tool は ZXing Java JAR の SHA-256 と
+ZXing-C++ の公式 PyPI wheel の hash を検査します。第三者の encoder や decoder の
+source、binary、dependency、import を Java runtime に含めることはありません。

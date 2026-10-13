@@ -1,6 +1,6 @@
 # Java API リファレンス
 
-The public Java API lives in `io.specqr`. Generated results are immutable; mutable arrays are copied at ownership boundaries.
+公開 Java API は `io.specqr` にあります。生成結果は immutable で、可変の配列は所有権の境界でコピーします。
 
 この文書は `0.1.0-rc.1` の Java API を説明します。他言語版とアルゴリズム・主要な契約を共有しますが、メソッド名、型、例外、診断の任意フィールドが完全に同一とは限りません。特に Java の配列、UTF-16、型付き `Options`、GS1 URL adapter の境界を確認してください。
 

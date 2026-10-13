@@ -1,6 +1,6 @@
 # Contributing
 
-Contributions should preserve SpecQR's deterministic contracts and Java-only runtime. Please include focused tests and document deliberate compatibility differences.
+貢献する変更では、SpecQR の決定的な契約と Java だけで動作する runtime を維持してください。変更に対応するテストを含め、意図した互換性の差を文書化してください。
 
 ## 開発環境
 
@@ -28,7 +28,7 @@ CI の対象は Linux / macOS / Windows と Temurin 17 / 21 / 25 の組み合わ
 ## 守る契約
 
 - runtime は `java.base` のみ。GUI、画像、ネイティブ、他言語、外部 QR 実装に依存しない
-- QR Model 2、Version 1–40 の範囲を明示し、未対応機能を成功扱いしない
+- QR Code Model 2、Version 1–40 の範囲を明示し、未対応機能を成功扱いしない
 - 数値・英数字・Kanji・UTF-8・binary の境界と手動セグメント境界を保つ
 - UTF-16 の孤立 surrogate を QR 入力で拒否する。Kanji 表をプラットフォーム charset で置き換えない
 - ECI を文字コード変換として扱わない。FNC1 の percent 規則を破壊しない

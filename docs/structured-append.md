@@ -1,6 +1,6 @@
 # Structured Append
 
-`StructuredAppend` splits text, bytes, or manual segments into a deterministic set of 2–16 QR symbols and validates decoded parts before joining them.
+`StructuredAppend` は、text、bytes、手動セグメントを決定的な 2–16 個の QR symbol のセットに分割し、復号済みパートを検証してから結合します。
 
 Structured Append は、複数の QR symbol に sequence / total / parity の header を付ける機能です。SpecQR-Java は自動分割、低水準 header、parity 計算、復号済みパートの結合を提供します。**QR を画像から読み取る decoder は含みません。** 読み取りライブラリが Structured Append metadata を公開するかは別途確認してください。
 
