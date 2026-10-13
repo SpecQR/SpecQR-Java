@@ -1,6 +1,6 @@
 # Security
 
-SpecQR-Java encodes data; it does not verify a payload's trustworthiness, authorize a URL, encrypt information, or authenticate Structured Append parts.
+SpecQR-Java はデータを符号化します。payload の信頼性の検証、URL の許可判断、情報の暗号化、Structured Append のパートの認証は行いません。
 
 ## 対象と前提
 

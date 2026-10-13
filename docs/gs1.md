@@ -1,6 +1,6 @@
 # GS1 / Digital Link
 
-`Gs1` provides a bounded 50-AI catalog, element-string helpers, check digits, and local Digital Link parsing. It is not a full GS1 validator, resolver, or certification service.
+`Gs1` は、範囲を限定した 50 個の AI の catalog、element string のヘルパー、check digit、ローカルでの Digital Link 解析を提供します。完全な GS1 validator、resolver、認証サービスではありません。
 
 SpecQR-Java は、固定した SpecQR のカタログに含まれる **50 個の具体的な AI** を扱います。GS1 全仕様、すべての業種・用途規則、GS1 Digital Link の圧縮・resolver・canonicalization は実装しません。このライブラリによる生成・検証は GS1 認証を意味しません。ヘルパーは DNS 解決やネットワーク通信を行いません。
 
